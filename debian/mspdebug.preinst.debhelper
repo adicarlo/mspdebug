@@ -1,0 +1,11 @@
+# Automatically added by dh_installudev
+if [ "$1" = install ] || [ "$1" = upgrade ]; then
+	if [ -e "/etc/udev/rules.d/92_mspdebug.rules" ]; then
+		if [ "`md5sum \"/etc/udev/rules.d/92_mspdebug.rules\" | sed -e \"s/ .*//\"`" = \
+		     "`dpkg-query -W -f='${Conffiles}' mspdebug | sed -n -e \"\\\\' /etc/udev/rules.d/92_mspdebug.rules '{s/ obsolete$//;s/.* //p}\"`" ]
+		then
+			rm -f "/etc/udev/rules.d/92_mspdebug.rules"
+		fi
+	fi
+fi
+# End automatically added section
